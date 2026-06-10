@@ -10,11 +10,11 @@ from xgboost import XGBClassifier
 df = pd.read_csv(r'D:\\Projects\\WorldCup_Predictor\\datasets\\reduced_results_winners.csv')
 
 features= ['home_team', 'away_team', 'tournament']
-# Select features (you can add 'neutral', 'tournament', etc. later to improve accuracy)
+# Select features
 X = df[features]
-y = df['result']  # Assuming this holds 'home', 'away', 'draw'
+y = df['result']  # This holds 'home', 'away', 'draw'
 
-# 2. Encode the target variable (Result -> 0, 1, 2)
+# 2. Encode the target variable
 label_encoder = LabelEncoder()
 y_encoded = label_encoder.fit_transform(y)
 
@@ -38,9 +38,9 @@ X_val_encoded = preprocessor.transform(X_val) # Use transform, NOT fit_transform
 # 5. Define the XGBoost Model with Early Stopping
 xgb_model = XGBClassifier(
     n_estimators=1500,         # Max "epochs" (number of trees)
-    learning_rate=0.1,        # How much each tree contributes (lower is usually better but requires more trees)
-    early_stopping_rounds=100,  # Stop if no improvement after 50 trees
-    eval_metric=['mlogloss', 'merror'],    # Metric to evaluate (Multi-class log loss)
+    learning_rate=0.1,        # How much each tree contributes
+    early_stopping_rounds=100,  # Stop if no improvement after specified trees
+    eval_metric=['mlogloss', 'merror'],    # Metric to evaluate (Multi-class log loss) and error
     random_state=42
 )
 
@@ -50,12 +50,12 @@ xgb_model.fit(
     X_train_encoded, 
     y_train,
     eval_set=[(X_train_encoded, y_train), (X_val_encoded, y_val)], # Show train vs val metrics
-    verbose=100 # Print the results every 50 "epochs"/trees
+    verbose=100 # Print the results every specified "epochs"/trees
 )
 print(f"Training stopped. Best iteration: {xgb_model.best_iteration}")
 
 # 7. Re-combine into a Pipeline for Easy Saving & Future Use
-# Now that both are trained, put them back together so predictions only take 1 step!
+# Now that both are trained, put them back together so predictions only require 1 additional step
 final_pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
     ('classifier', xgb_model)
