@@ -17,14 +17,12 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-origins = ["*"] # Add in the link to the frontend here. This/these will be the links allowed to access the Fast backend
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = origins,
-    allow_credentials = False,
-    allow_methods = ["*"],
-    allow_headers= ["*"],
+    allow_origins=["*"],  # Allows all origins (you can restrict this to your Vercel URL later)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (POST, GET, etc.)
+    allow_headers=["*"],  # Allows all headers
 )
 class Matches(BaseModel):
     home_team : str
