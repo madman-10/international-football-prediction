@@ -1,0 +1,10 @@
+# Ignore the entire backend folder
+api/
+
+# Ignore Python environments and caches
+venv/
+__pycache__/
+
+# Ignore any root-level Python scripts and datasets
+*.py
+datasets/
