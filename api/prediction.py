@@ -7,8 +7,8 @@ loaded_label_encoder = None
 # 1. Load the unified pipeline and encoder
 def load_pipelines():
     global loaded_pipeline, loaded_label_encoder
-    loaded_pipeline = joblib.load('world_cup_xgb_model.pkl')
-    loaded_label_encoder = joblib.load('target_label_encoder.pkl')
+    loaded_pipeline = joblib.load('api/world_cup_xgb_model.pkl')
+    loaded_label_encoder = joblib.load('api/target_label_encoder.pkl')
     print("Loaded successfully!")
 
 load_pipelines()
