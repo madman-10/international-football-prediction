@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
-import prediction
+from api import prediction
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
