@@ -4,5 +4,10 @@
       "source": "/api/(.*)",
       "destination": "/api/index.py"
     }
-  ]
+  ],
+  "functions": {
+    "api/**/*.py": {
+      "excludeFiles": "{venv/**,datasets/**,node_modules/**,train_model.py,test.py,public/**,src/**}"
+    }
+  }
 }
