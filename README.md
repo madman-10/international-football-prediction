@@ -10,9 +10,9 @@ A machine learning and data analysis project to predict the outcomes of internat
 ## 🚀 Features
 
 *   **Data Processing:** Cleans and processes historical international football data (e.g., friendlies, World Cup, Euro, Copa America).
-*   **Feature Engineering:** Calculates team form, head-to-head statistics, win streaks, and FIFA rankings.
+*   **Feature Engineering:** Calculates team form, head-to-head statistics, win streaks.
 *   **Predictive Modeling:** Uses XGBoost to predict match outcomes.
-*   **Evaluation Metrics:** Tracks model accuracy, precision, recall, and F1-score.
+*   **Evaluation Metrics:** Tracks model accuracy, precision.
 
 ## 🛠️ Tech Stack
 
