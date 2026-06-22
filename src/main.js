@@ -88,6 +88,10 @@ form.addEventListener('submit', async (event) => {
         document.getElementById('prob-draw').textContent = (drawProb * 100).toFixed(1) + '%';
         document.getElementById('prob-away').textContent = (awayProb * 100).toFixed(1) + '%';
 
+        console.log(`Draw Prob : ${ drawProb}
+            Home Prob : ${homeProb}
+            Away Prob : ${awayProb}`)
+
     } catch (error) {
         console.error('Prediction Error:', error);
         errorBox.textContent = "Failed to connect to the prediction server. Ensure FastAPI is running.";
