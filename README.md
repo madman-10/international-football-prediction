@@ -25,11 +25,14 @@ A machine learning and data analysis project to predict the outcomes of internat
 ```text
 international-football-prediction/
 │
-├── data/                  # Raw and processed datasets
-├── notebooks/             # Jupyter notebooks for EDA and model testing
-├── src/                   # Python scripts for data processing and modeling
-│   ├── preprocess.py      # Data cleaning scripts
-│   ├── train.py           # Model training scripts
-│   └── predict.py         # Script to run new predictions
-├── requirements.txt       # Python dependencies
-└── README.md              # Project documentation
+├─ train_model.py                    # Model training script
+├── api/                             # Python scripts and model files
+│   ├── index.py                     # Fastapi code for the prediction api
+│   ├── prediction.py                # Predict function and output cleanup for frontend
+│   ├── target_label_encoder.py      # Saved labels for win, draw loss after Label encoding
+│   └── world_cup_xgb_model.py       # Saved xgboost model after training
+├── datasets/                        # Raw and processed datasets
+├── public/                
+│   ├── teams.txt                    # List of teams for prediction
+├── requirements.txt                 # Python dependencies
+└── README.md                        # Project documentation
